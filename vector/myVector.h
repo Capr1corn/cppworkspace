@@ -24,10 +24,10 @@ myVector(const T& t,unsigned int n):array(0),theSize(0),theCapacity(0)
 }
 myVector(const myVector<T>&  other):array(0),theSize(0),theCapacity(0)
 {
-    *this=other;
+    *this=other;//拷贝构造函数
 }
- myVector<T>& operator=(myVector<T>& other){
-    if(this==&other)
+ myVector<T>& operator=(myVector<T>& other){//拷贝赋值函数
+    if(this==&other)    //避免自赋值，因为传进来的是是一个引用，所以要用取值符
         return *this;
     clear();
     theSize=other.theSize;
@@ -107,15 +107,15 @@ void clear(){
 private:
     T* allocator(unsigned int size)
     {
-        return new T[size];
+        return new T[size];  //申请一个新的大小为size的数组
     }
     void deallocator(T* arr){
         if(arr)
-            delete[] arr;
-            arr=0;
+            delete[] arr;//如果arr不为空，删除指向数组的指针
+            arr=0;//然后将指针赋值为0，避免空悬指针。
     }
 private:
-    T*  array;
+    T*  array;//指向T 类型的指针。
     unsigned int theSize;
     unsigned int theCapacity;
 };
