@@ -16,4 +16,5 @@ stl中的sort算法只能对序列容器进行排序，而且是线性的，所�
 //sort(name_score_vec.begin(),name_score_vec.end());//map排序默认是pair.first 从小到大，这里自定义为
 //map.second  从大到小
 
+map内部自建一颗红黑树，这棵树具有对数据自动排序的功能，所以map内部所有数据都是有序的。
 
